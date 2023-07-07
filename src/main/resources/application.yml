@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/e_commerce_db
+    username: root
+    password: f62027704
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    #MySQL 8 的方言
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    #generate-ddl設置成Ture時，Hibernate 會根據實體類和映射設定自動生成數據庫表結構
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
