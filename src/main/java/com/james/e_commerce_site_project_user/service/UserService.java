@@ -1,7 +1,9 @@
 package com.james.e_commerce_site_project_user.service;
 
 import com.james.e_commerce_site_project_user.dto.UserRegistrationDTO;
+import com.james.e_commerce_site_project_user.dto.UserRegistrationResponseDTO;
+import com.james.e_commerce_site_project_user.model.User;
 
 public interface UserService {
-    void registerUser(UserRegistrationDTO registrationDTO);
+    UserRegistrationResponseDTO registerUser(UserRegistrationDTO userRegistrationDTO) throws Exception;
 }

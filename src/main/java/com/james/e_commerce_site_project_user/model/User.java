@@ -15,6 +15,7 @@ public class User {
     @Column(unique = true)
     private String username;
 
+    @Column(unique = true)
     private String password;
 
     @Column(unique = true)
@@ -24,5 +25,6 @@ public class User {
 
     private Boolean isVerified;
 
-    // getters and setters
+    private String verificationToken;
+
 }

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>註冊頁面</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
@@ -20,13 +21,16 @@
         <input type="email" id="email" name="email" required />
     </div>
     <div>
-        <input type="submit" value="註冊" />
+        <input type="button" id="signup" value="註冊" />
+    </div>
+    <div id="response">
     </div>
 </form>
 
 <script>
     $(document).ready(function() {
-        $('#signup-form').submit(function(event) {
+        console.log(1);
+        $('#signup').click(function(event) {
             event.preventDefault();
 
             var formData = {
@@ -34,18 +38,19 @@
                 password: $('#password').val(),
                 email: $('#email').val()
             };
-
+            console.log(0);
             $.ajax({
                 type: 'POST',
-                url: '/register',
+                url: '/api/register',
                 data: JSON.stringify(formData),
                 contentType: 'application/json',
                 success: function(response) {
-                    // 處理成功回應
                     console.log(response);
+                    $("#response").html(response.username+"<br>"+response.email+"<br>"+response.message);
                 },
                 error: function(error) {
                     // 處理錯誤回應
+                    alert(error);
                     console.log(error);
                 }
             });

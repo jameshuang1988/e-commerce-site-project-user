@@ -6,4 +6,7 @@ import com.james.e_commerce_site_project_user.model.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
+    User findByEmail(String email);
+    User findByUsername(String username);
+    User findByVerificationToken(String token);
 }
