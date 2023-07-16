@@ -12,7 +12,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.servlet.ModelAndView;
 
 @RestController
-@RequestMapping("/api")
 @Slf4j
 public class UserController {
 
@@ -27,13 +26,19 @@ public class UserController {
         return new ModelAndView("forward:/signup.html");
     }
 
-    @PostMapping("/register")
+    @GetMapping("/index")
+    public ModelAndView index() {
+        log.info("---認證成功進入index page---");
+        return new ModelAndView("forward:/index.html");
+    }
+
+    @PostMapping("/api/register")
     public UserRegistrationResponseDTO registerUser(@RequestBody UserRegistrationDTO dto) throws Exception {
         log.info("register user page...");
         return userService.registerUser(dto);
     }
 
-    @GetMapping("/verify")
+    @GetMapping("/api/verify")
     public String verifyEmail(@RequestParam String token) {
         User user = userRepository.findByVerificationToken(token);
         if (user != null) {
